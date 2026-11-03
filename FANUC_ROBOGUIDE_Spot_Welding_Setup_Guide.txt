@@ -1,0 +1,52 @@
+FANUC R-30iB SERVO GUN SPOT WELDING - ROBOGUIDE SETUP GUIDE
+
+Project: Two-point resistance spot-welding demonstration
+Robot/controller: FANUC R-30iB
+Gun: Servo gun
+
+IMPORTANT COMPATIBILITY CHECK
+The virtual controller must have the FANUC Servo Gun and spot-welding software options
+configured/licensed. The exact screens and program syntax depend on controller software
+revision and installed options. Confirm against the R-30iB Servo Gun Operator's Manual
+(B-83264EN) and Spot Welding Function Operator's Manual (B-83284EN-4) for your revision.
+
+PROGRAM TEMPLATE
+FANUC_R30iB_Servo_Gun_Spot_Weld.LS is an instructional starting template. It uses the
+servo-gun SPOT instruction form:
+  SPOT[SD=1,P=1,t=2.0,S=1,ED=1]
+The numbers are schedule identifiers / example part thickness, not validated weld settings.
+Do not use these values for production welding. Set up and validate start-distance,
+pressure, end-distance and weld schedules in the controller using an approved weld procedure.
+The example Cartesian coordinates are placeholders and must be retaught.
+
+ROBOGUIDE WORKFLOW
+1. Create a new workcell and choose a robot/controller configuration that matches your
+   installed R-30iB software revision and options.
+2. Add the robot, servo spot-welding gun model, workpiece, fixture and safety equipment.
+3. Verify the gun axis is configured as a servo gun; check axis group and mastering status.
+4. Configure the robot tool frame, user frame, payload, gun TCP and gun close direction.
+5. Configure the servo-gun equipment and schedule tables using approved process data.
+6. Teach P[5] safe start/retract, P[1] approach to weld 1, P[2] weld 1, P[3] approach
+   to weld 2 and P[4] weld 2. Replace all placeholder coordinates.
+7. Confirm each weld point is accessible and that the gun electrodes align correctly on
+   the two sheet surfaces. Check approach/retract clearance and fixture collision.
+8. Import the LS file if supported, or create the instructions in the TP editor. Verify
+   each SPOT instruction's SD, P, t, S and ED values against the configured schedules.
+9. Start with simulation / weld I/O simulation / tryout mode as permitted by the manual.
+   Confirm the gun closes, applies the programmed force sequence and opens as expected.
+10. Review alarms, weld complete feedback, cycle sequence, collision checks and logs.
+11. Save the workcell and capture screenshots of the cell, program, servo gun setup,
+    schedules (without confidential values if restricted), and successful simulation.
+
+WELD PROCESS VALUES
+Weld current, weld time, squeeze time, hold time, electrode force, pressure schedule,
+tip geometry, sheet material/thickness and weld schedule must be set by a qualified
+welding/process engineer using a validated welding procedure and equipment limits.
+This package intentionally does not invent those production parameters.
+
+SAFETY
+This is an educational simulation example, not a production-ready or safety-certified
+program. Do not execute on physical equipment based only on this template. Physical
+commissioning requires qualified personnel, risk assessment, guarding, interlocks,
+emergency-stop verification, gun calibration, electrode checks, and approved FANUC
+and welding-equipment procedures.
