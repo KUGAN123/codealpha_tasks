@@ -1,4 +1,4 @@
-# FANUC BIW Spot Welding Using Industrial Robot
+# Industrial BIW Spot Welding Project Using Fanuc Roboguide Software With Articulate Robot
 
 ## Project Overview
 This project demonstrates an automated **Body-in-White (BIW) spot-welding process** using a FANUC industrial robot. The robot uses a servo spot-welding gun to perform welding operations at predefined positions on automotive sheet-metal components.
